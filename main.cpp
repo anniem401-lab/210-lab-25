@@ -18,36 +18,36 @@ int main() {
     // Vector, List, Set.
 
     // Reading codes from the file.
-    ifstream finV; // Reading for vector...
+    ifstream finV; // Reading for Vector...............................................
     finV.open("codes.txt"); // 20,000 elements in file
     // Checking if file opened successfully.
     if (!finV.good()) throw "I/O error";
 
-    // To start timing
+    // To start timing vector
     auto startV = high_resolution_clock::now(); // Using clock of shortest tick period.
 
-    // Declaring vector
+    // Declaring Vector
     vector<string> vRead; // Holding strings of code
     string codes;
     while (getline(finV, codes)){
         vRead.push_back(codes);
     }
 
-    // To end timing
+    // To end timing for Vector
     auto endV = high_resolution_clock::now();
 
-    // To calculate duration 
+    // To calculate duration of Vector
     auto durationV = duration_cast<milliseconds>(endV - startV);
 
     // To output duration in milliseconds
     cout << endl << "Vector Read: " << " " << durationV.count() << " milliseconds\n";
     finV.close();
 
-    //Reading for List...
+    //Reading for List................................................................
     ifstream finL;
     finL.open("codes.txt");
 
-    // To start timing
+    // To start timing List
     auto startL = high_resolution_clock::now();
 
     //Declaring List
@@ -56,7 +56,7 @@ int main() {
         lRead.push_back(codes);
     }
 
-    // To end timing
+    // To end timing for List
     auto endL = high_resolution_clock::now();
 
     // To calculate duration 
@@ -66,9 +66,24 @@ int main() {
     cout << "List Read: " << " " << durationL.count() << " milliseconds\n";
     finL.close();
 
+    //Reading for Set.................................................................
+    ifstream finS;
+    finS.open("codes.txt");
 
+    // To start timing Set
+    auto startSet = high_resolution_clock::now();
+    
     // Declaring Set
     set<string> sRead;
+    while (getline(finS, codes)){
+        sRead.insert(codes);
+    }
+
+    // To end timing for Set
+    auto endSet = high_resolution_clock::now();
+
+    // To calculate duration 
+    auto durationS = duration_cast<milliseconds>(endSet - startSet);
 
 
     return 0;
