@@ -21,7 +21,6 @@ int main() {
     ifstream finV; // Reading for Vector...............................................
     finV.open("codes.txt"); // 20,000 elements in file
     if (!finV.good()) throw "I/O error"; // Checking if file opened successfully.
-
     auto startV = high_resolution_clock::now(); // Using clock of shortest tick period.
 
     // Declaring Vector
@@ -34,14 +33,12 @@ int main() {
     auto durationV = duration_cast<milliseconds>(endV - startV);
 
     cout << endl << "Operation Read"; cout << " ----------------";
-
     cout << endl << "Vector Read in: " << " " << durationV.count() << " milliseconds\n";
     finV.close();
 
     //Reading for List................................................................
     ifstream finL;
     finL.open("codes.txt");
-
     auto startL = high_resolution_clock::now();
 
     //Declaring List
@@ -51,14 +48,12 @@ int main() {
     }
     auto endL = high_resolution_clock::now();
     auto durationL = duration_cast<milliseconds>(endL - startL);
-
     cout << "List Read in: " << " " << durationL.count() << " milliseconds\n";
     finL.close();
 
     //Reading for Set.................................................................
     ifstream finS;
     finS.open("codes.txt");
-
     auto startSet = high_resolution_clock::now();
     
     // Declaring Set
@@ -68,20 +63,25 @@ int main() {
     }
     auto endSet = high_resolution_clock::now();
     auto durationS = duration_cast<milliseconds>(endSet - startSet);
-    
     cout << "Set Read in: " << " " << durationL.count() << " milliseconds\n" << endl;
     finS.close();
 
     // Second Race: Sorting
-    // Vector and List will be sorted. 
-    // Set's value will be -1 since set's already sorted.
+    // Vector and List will be sorted. Set's value will be -1 since set's already sorted.
 
     // Sorting Vector
+    cout << "Operation Sorting"; cout << " -----------------";
     auto startVe = high_resolution_clock::now();
     sort(vRead.begin(), vRead.end());
-    for (string codes : vRead){
+    //for (string codes : vRead){
+     //   cout << codes << " ";
+    //}
+    auto endVe = high_resolution_clock::now();
+    auto durationVe = duration_cast<milliseconds>(endVe - startVe);
+    cout << endl << "Vector Sorted in: " << " " << durationL.count() << " milliseconds\n" << endl;
 
-    }
+    // Sorting List
+    
 
     return 0;
 }
