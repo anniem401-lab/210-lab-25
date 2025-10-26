@@ -7,6 +7,7 @@
 #include <fstream> // For file handling
 #include <string> // For using string
 #include <list> // For using std::list
+#include <set> // For using std:: set
 using namespace std;
 using namespace std::chrono; // To use a clock.
 
@@ -17,13 +18,13 @@ int main() {
     // Vector, List, Set.
 
     // Reading codes from the file.
-    ifstream finV;
-    finV.open("codes.txt");
+    ifstream finV; // Reading for vector...
+    finV.open("codes.txt"); // 20,000 elements in file
     // Checking if file opened successfully.
     if (!finV.good()) throw "I/O error";
 
     // To start timing
-    auto start = high_resolution_clock::now(); // Using clock of shortest tick period.
+    auto startV = high_resolution_clock::now(); // Using clock of shortest tick period.
 
     // Declaring vector
     vector<string> vRead; // Holding strings of code
@@ -33,15 +34,16 @@ int main() {
     }
 
     // To end timing
-    auto end = high_resolution_clock::now();
+    auto endV = high_resolution_clock::now();
 
     // To calculate duration 
-    auto duration = duration_cast<milliseconds>(end - start);
+    auto durationV = duration_cast<milliseconds>(endV - startV);
 
     // To output duration in milliseconds
-    cout << "Vector Read: " << " " << duration.count() << "milliseconds\n";
+    cout << endl << "Vector Read: " << " " << durationV.count() << " milliseconds\n";
     finV.close();
 
+    //Reading for List...
     ifstream finL;
     finL.open("codes.txt");
 
@@ -58,11 +60,16 @@ int main() {
     auto endL = high_resolution_clock::now();
 
     // To calculate duration 
-    auto durationL = duration_cast<milliseconds>(end - start);
+    auto durationL = duration_cast<milliseconds>(endL - startL);
 
     // To output duration in milliseconds
-    cout << "List Read: " << " " << duration.count() << "milliseconds\n";
+    cout << "List Read: " << " " << durationL.count() << " milliseconds\n";
     finL.close();
+
+
+    // Declaring Set
+    set<string> sRead;
+
 
     return 0;
 }
