@@ -15,31 +15,23 @@ int main() {
     // 20,000 data elements will be read into these data structures:
     // Vector, List, Set.
 
-    // Declaring vector
-    vector<string> codes; // Holding strings of code
-
     // Reading codes from the file.
-    ifstream fin;
-    fin.open("codes.txt");
+    ifstream finV;
+    finV.open("codes.txt");
     // Checking if file opened successfully.
-    if (!fin.good()) throw "I/O error";
+    if (!finV.good()) throw "I/O error";
     // Reading codes and storing them in vector
 
     // To start timing
     auto start = high_resolution_clock::now(); // Using clock of shortest tick period.
 
+    // Declaring vector
+    vector<string> vRead; // Holding strings of code
     string codes;
-    while (getline(fin, codes)){
-
+    while (getline(finV, codes)){
+        
+        vRead.push_back(codes);
     }
-    
-    
-    
-    //for (int i = 0; i < 20000; i++) {
-        //codes.push_back(i);
-    //}
-
-
 
     // To end timing
     auto end = high_resolution_clock::now();
