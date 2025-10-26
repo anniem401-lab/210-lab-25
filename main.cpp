@@ -6,6 +6,7 @@
 #include <vector> // To use vectors
 #include <fstream> // For file handling
 #include <string> // For using string
+#include <list> // For using std::list
 using namespace std;
 using namespace std::chrono; // To use a clock.
 
@@ -20,7 +21,6 @@ int main() {
     finV.open("codes.txt");
     // Checking if file opened successfully.
     if (!finV.good()) throw "I/O error";
-    // Reading codes and storing them in vector
 
     // To start timing
     auto start = high_resolution_clock::now(); // Using clock of shortest tick period.
@@ -29,7 +29,6 @@ int main() {
     vector<string> vRead; // Holding strings of code
     string codes;
     while (getline(finV, codes)){
-        
         vRead.push_back(codes);
     }
 
@@ -40,7 +39,30 @@ int main() {
     auto duration = duration_cast<milliseconds>(end - start);
 
     // To output duration in milliseconds
-    cout << " " << duration.count() << "milliseconds\n";
+    cout << "Vector Read: " << " " << duration.count() << "milliseconds\n";
+    finV.close();
+
+    ifstream finL;
+    finL.open("codes.txt");
+
+    // To start timing
+    auto startL = high_resolution_clock::now();
+
+    //Declaring List
+    list<string> lRead;
+    while (getline(finL, codes)){
+        lRead.push_back(codes);
+    }
+
+    // To end timing
+    auto endL = high_resolution_clock::now();
+
+    // To calculate duration 
+    auto durationL = duration_cast<milliseconds>(end - start);
+
+    // To output duration in milliseconds
+    cout << "List Read: " << " " << duration.count() << "milliseconds\n";
+    finL.close();
 
     return 0;
 }
