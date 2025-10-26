@@ -8,22 +8,20 @@
 #include <string> // For using string
 #include <list> // For using std::list
 #include <set> // For using std:: set
+#include <algorithm>
 using namespace std;
 using namespace std::chrono; // To use a clock.
 
 int main() {
 
     // First race: Reading
-    // 20,000 data elements will be read into these data structures:
-    // Vector, List, Set.
+    // 20,000 data elements will be read into these data structures: Vector, List, Set.
 
     // Reading codes from the file.
     ifstream finV; // Reading for Vector...............................................
     finV.open("codes.txt"); // 20,000 elements in file
-    // Checking if file opened successfully.
-    if (!finV.good()) throw "I/O error";
+    if (!finV.good()) throw "I/O error"; // Checking if file opened successfully.
 
-    // To start timing vector
     auto startV = high_resolution_clock::now(); // Using clock of shortest tick period.
 
     // Declaring Vector
@@ -32,16 +30,11 @@ int main() {
     while (getline(finV, codes)){
         vRead.push_back(codes);
     }
-
-    // To end timing for Vector
     auto endV = high_resolution_clock::now();
-
-    // To calculate duration of Vector
     auto durationV = duration_cast<milliseconds>(endV - startV);
 
     cout << endl << "Operation Read"; cout << " ----------------";
 
-    // To output duration in milliseconds
     cout << endl << "Vector Read in: " << " " << durationV.count() << " milliseconds\n";
     finV.close();
 
@@ -49,7 +42,6 @@ int main() {
     ifstream finL;
     finL.open("codes.txt");
 
-    // To start timing List
     auto startL = high_resolution_clock::now();
 
     //Declaring List
@@ -57,14 +49,9 @@ int main() {
     while (getline(finL, codes)){
         lRead.push_back(codes);
     }
-
-    // To end timing for List
     auto endL = high_resolution_clock::now();
-
-    // To calculate duration 
     auto durationL = duration_cast<milliseconds>(endL - startL);
 
-    // To output duration in milliseconds
     cout << "List Read in: " << " " << durationL.count() << " milliseconds\n";
     finL.close();
 
@@ -72,7 +59,6 @@ int main() {
     ifstream finS;
     finS.open("codes.txt");
 
-    // To start timing Set
     auto startSet = high_resolution_clock::now();
     
     // Declaring Set
@@ -80,27 +66,29 @@ int main() {
     while (getline(finS, codes)){
         sRead.insert(codes);
     }
-
-    // To end timing for Set
     auto endSet = high_resolution_clock::now();
-
-    // To calculate duration 
     auto durationS = duration_cast<milliseconds>(endSet - startSet);
     
-    // To output duration in milliseconds
     cout << "Set Read in: " << " " << durationL.count() << " milliseconds\n" << endl;
     finS.close();
 
     // Second Race: Sorting
-    // Vector and list will be sorted. 
+    // Vector and List will be sorted. 
     // Set's value will be -1 since set's already sorted.
+
+    // Sorting Vector
+    auto startVe = high_resolution_clock::now();
+    sort(vRead.begin(), vRead.end());
+    for (string codes : vRead){
+
+    }
 
     return 0;
 }
 
 /* syntax examples:
-auto start = high_resolution_clock::now()
-auto end = high_resolution_clock::now()
-auto duration = duration_cast<milliseconds>(end - start)
+auto start = high_resolution_clock::now();
+auto end = high_resolution_clock::now();
+auto duration = duration_cast<milliseconds>(end - start);
 duration.count() references elapsed milliseconds
 */
