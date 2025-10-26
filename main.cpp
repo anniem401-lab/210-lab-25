@@ -14,7 +14,7 @@ using namespace std::chrono; // To use a clock.
 
 int main() {
 
-    // First race: Reading
+    // First race: READING
     // 20,000 data elements will be read into these data structures: Vector, List, Set.
 
     // Reading codes from the file.
@@ -66,10 +66,10 @@ int main() {
     cout << "Set Read in: " << " " << durationS.count() << " milliseconds\n" << endl;
     finS.close();
 
-    // Second Race: Sorting
+    // Second Race: SORTING
     // Vector and List will be sorted. Set's value will be -1 since set's already sorted.
 
-    // Sorting Vector
+    // Sorting Vector......................................................................
     cout << "Operation Sorting"; cout << " -----------------";
     auto startVe = high_resolution_clock::now();
     sort(vRead.begin(), vRead.end());
@@ -77,18 +77,21 @@ int main() {
     auto durationVe = duration_cast<milliseconds>(endVe - startVe);
     cout << endl << "Vector Sorted in: " << " " << durationVe.count() << " milliseconds\n";
 
-    // Sorting List
+    // Sorting List.........................................................................
     auto startLi = high_resolution_clock::now();
     lRead.sort();
     auto endLi = high_resolution_clock::now();
     auto durationLi = duration_cast<milliseconds>(endLi - startLi);
     cout << "List Sorted in: " << " " << durationLi.count() << " milliseconds\n";
 
-    // Sorting Set
+    // Sorting Set...........................................................................
     auto startSe = high_resolution_clock::now();
-
+    sRead.end();
     auto endSe = high_resolution_clock::now();
-    auto durationSe
+    auto durationSe = duration_cast<milliseconds>(endSe - startSe);
+    cout << endl << "Set Sorted in: " << " " << durationSe.count() << " milliseconds\n";
+
+    // Third Race: INSERTING
 
     return 0;
 }
