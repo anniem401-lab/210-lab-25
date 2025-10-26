@@ -5,16 +5,18 @@
 #include <chrono> // For clock use
 #include <vector> // To use vectors
 #include <fstream> // For file handling
+#include <string> // For using string
 using namespace std;
 using namespace std::chrono; // To use a clock.
 
 int main() {
-    // To start timing
-    auto start = high_resolution_clock::now(); // Using clock of shortest tick period.
 
     // First race: Reading
     // 20,000 data elements will be read into these data structures:
     // Vector, List, Set.
+
+    // Declaring vector
+    vector<string> codes; // Holding strings of code
 
     // Reading codes from the file.
     ifstream fin;
@@ -23,8 +25,20 @@ int main() {
     if (!fin.good()) throw "I/O error";
     // Reading codes and storing them in vector
 
-    //vector<string> codes;
-   // for (int i = 0; i < )
+    // To start timing
+    auto start = high_resolution_clock::now(); // Using clock of shortest tick period.
+
+    string codes;
+    while (getline(fin, codes)){
+
+    }
+    
+    
+    
+    //for (int i = 0; i < 20000; i++) {
+        //codes.push_back(i);
+    //}
+
 
 
     // To end timing
