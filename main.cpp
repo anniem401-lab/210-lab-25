@@ -54,16 +54,16 @@ int main() {
     //Reading for Set.................................................................
     ifstream finS;
     finS.open("codes.txt");
-    auto startSet = high_resolution_clock::now();
-    
+    auto startS = high_resolution_clock::now();
+
     // Declaring Set
     set<string> sRead;
     while (getline(finS, codes)){
         sRead.insert(codes);
     }
-    auto endSet = high_resolution_clock::now();
-    auto durationS = duration_cast<milliseconds>(endSet - startSet);
-    cout << "Set Read in: " << " " << durationL.count() << " milliseconds\n" << endl;
+    auto endS = high_resolution_clock::now();
+    auto durationS = duration_cast<milliseconds>(endS - startS);
+    cout << "Set Read in: " << " " << durationS.count() << " milliseconds\n" << endl;
     finS.close();
 
     // Second Race: Sorting
@@ -73,15 +73,22 @@ int main() {
     cout << "Operation Sorting"; cout << " -----------------";
     auto startVe = high_resolution_clock::now();
     sort(vRead.begin(), vRead.end());
-    //for (string codes : vRead){
-     //   cout << codes << " ";
-    //}
     auto endVe = high_resolution_clock::now();
     auto durationVe = duration_cast<milliseconds>(endVe - startVe);
-    cout << endl << "Vector Sorted in: " << " " << durationL.count() << " milliseconds\n" << endl;
+    cout << endl << "Vector Sorted in: " << " " << durationVe.count() << " milliseconds\n";
 
     // Sorting List
-    
+    auto startLi = high_resolution_clock::now();
+    lRead.sort();
+    auto endLi = high_resolution_clock::now();
+    auto durationLi = duration_cast<milliseconds>(endLi - startLi);
+    cout << "List Sorted in: " << " " << durationLi.count() << " milliseconds\n";
+
+    // Sorting Set
+    auto startSe = high_resolution_clock::now();
+
+    auto endSe = high_resolution_clock::now();
+    auto durationSe
 
     return 0;
 }
