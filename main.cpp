@@ -39,8 +39,10 @@ int main() {
     // To calculate duration of Vector
     auto durationV = duration_cast<milliseconds>(endV - startV);
 
+    cout << endl << "Operation Read"; cout << " ----------------";
+
     // To output duration in milliseconds
-    cout << endl << "Vector Read: " << " " << durationV.count() << " milliseconds\n";
+    cout << endl << "Vector Read in: " << " " << durationV.count() << " milliseconds\n";
     finV.close();
 
     //Reading for List................................................................
@@ -63,7 +65,7 @@ int main() {
     auto durationL = duration_cast<milliseconds>(endL - startL);
 
     // To output duration in milliseconds
-    cout << "List Read: " << " " << durationL.count() << " milliseconds\n";
+    cout << "List Read in: " << " " << durationL.count() << " milliseconds\n";
     finL.close();
 
     //Reading for Set.................................................................
@@ -84,7 +86,14 @@ int main() {
 
     // To calculate duration 
     auto durationS = duration_cast<milliseconds>(endSet - startSet);
+    
+    // To output duration in milliseconds
+    cout << "Set Read in: " << " " << durationL.count() << " milliseconds\n" << endl;
+    finS.close();
 
+    // Second Race: Sorting
+    // Vector and list will be sorted. 
+    // Set's value will be -1 since set's already sorted.
 
     return 0;
 }
