@@ -117,8 +117,22 @@ int main() {
     cout << "Inserted 'TESTCODE' into Set in: " << " " << durationSet.count() << " microseconds\n" << endl;
 
     // Fourth Race: DELETING ==============================================================
+    // The middle-ish element will be deleted from the three data structures.
     cout << "Operation Deleting"; cout << " ---------------------------------";
-    
+
+    // Deleting from Vector................................................................
+    auto startVect = high_resolution_clock::now();
+    vRead.erase(vRead.begin() + 10000);
+    auto endVect = high_resolution_clock::now();
+    auto durationVect = duration_cast<microseconds>(endVect - startVect);
+    cout << endl << "Middle element deleted from Vector in: " << " " << durationSet.count() << " microseconds\n" << endl;
+
+    // Deleting from List..................................................................
+    auto startList = high_resolution_clock::now();
+    // Deleting...
+    lRead.erase(it);
+    auto endList = high_resolution_clock::now();
+    auto durationList = duration_cast<microseconds>(endList - startList);
 
     return 0;
 }
