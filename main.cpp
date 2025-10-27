@@ -102,12 +102,23 @@ int main() {
 
     // Inserting into List.................................................................
     auto startLis = high_resolution_clock::now();
-    lRead.insert(inTC, 10000);
+    auto it = lRead.begin();
+    advance(it, 10000);
+    lRead.insert(it, inTC);
     auto endLis = high_resolution_clock::now();
     auto durationLis = duration_cast<microseconds>(endLis - startLis);
     cout << "Inserted 'TESTCODE' into List in: " << " " << durationLis.count() << " microseconds\n";
 
     // Inserting into Set..................................................................
+    auto startSet = high_resolution_clock::now();
+    sRead.insert(inTC);
+    auto endSet = high_resolution_clock::now();
+    auto durationSet = duration_cast<microseconds>(endSet - startSet);
+    cout << "Inserted 'TESTCODE' into Set in: " << " " << durationSet.count() << " microseconds\n" << endl;
+
+    // Fourth Race: DELETING ==============================================================
+    cout << "Operation Deleting"; cout << " ---------------------------------";
+    
 
     return 0;
 }
