@@ -13,7 +13,7 @@ using namespace std;
 using namespace std::chrono; // To use a clock.
 
 int main() {
-
+    // Note: Microseconds are the unit of measurement used for time!
     // First race: READING ============================================================
     // 20,000 data elements will be read into these data structures: Vector, List, Set.
 
@@ -30,10 +30,10 @@ int main() {
         vRead.push_back(codes);
     }
     auto endV = high_resolution_clock::now();
-    auto durationV = duration_cast<milliseconds>(endV - startV);
+    auto durationV = duration_cast<microseconds>(endV - startV);
 
     cout << endl << "Operation Read"; cout << " ----------------";
-    cout << endl << "Vector Read in: " << " " << durationV.count() << " milliseconds\n";
+    cout << endl << "Vector Read in: " << " " << durationV.count() << " microseconds\n";
     finV.close();
 
     // Reading for List................................................................
@@ -47,8 +47,8 @@ int main() {
         lRead.push_back(codes);
     }
     auto endL = high_resolution_clock::now();
-    auto durationL = duration_cast<milliseconds>(endL - startL);
-    cout << "List Read in: " << " " << durationL.count() << " milliseconds\n";
+    auto durationL = duration_cast<microseconds>(endL - startL);
+    cout << "List Read in: " << " " << durationL.count() << " microseconds\n";
     finL.close();
 
     // Reading for Set.................................................................
@@ -62,8 +62,8 @@ int main() {
         sRead.insert(codes);
     }
     auto endS = high_resolution_clock::now();
-    auto durationS = duration_cast<milliseconds>(endS - startS);
-    cout << "Set Read in: " << " " << durationS.count() << " milliseconds\n" << endl;
+    auto durationS = duration_cast<microseconds>(endS - startS);
+    cout << "Set Read in: " << " " << durationS.count() << " microseconds\n" << endl;
     finS.close();
 
     // Second Race: SORTING ===============================================================
@@ -74,18 +74,18 @@ int main() {
     auto startVe = high_resolution_clock::now();
     sort(vRead.begin(), vRead.end());
     auto endVe = high_resolution_clock::now();
-    auto durationVe = duration_cast<milliseconds>(endVe - startVe);
-    cout << endl << "Vector Sorted in: " << " " << durationVe.count() << " milliseconds\n";
+    auto durationVe = duration_cast<microseconds>(endVe - startVe);
+    cout << endl << "Vector Sorted in: " << " " << durationVe.count() << " microseconds\n";
 
     // Sorting List........................................................................
     auto startLi = high_resolution_clock::now();
     lRead.sort();
     auto endLi = high_resolution_clock::now();
-    auto durationLi = duration_cast<milliseconds>(endLi - startLi);
-    cout << "List Sorted in: " << " " << durationLi.count() << " milliseconds\n";
+    auto durationLi = duration_cast<microseconds>(endLi - startLi);
+    cout << "List Sorted in: " << " " << durationLi.count() << " microseconds\n";
 
     // Sorting Set.........................................................................
-    cout << "Set Sorted in: " << "-1" << " milliseconds\n" << endl;
+    cout << "Set Sorted in: " << "-1" << " microseconds\n" << endl;
 
     // Third Race: INSERTING ==============================================================
     // The value "TESTCODE" will be inserted into the middle of the three data structures.
@@ -94,12 +94,14 @@ int main() {
     string inTC = "TESTCODE";
     
     // Inserting into Vector ..............................................................
-    cout << "Inserting element in the middle of Vector.";
     auto startVec = high_resolution_clock::now();
-    vRead.insert(vRead.begin() + 10000);
+    vRead.insert(vRead.begin() + 10000, inTC);
     auto endVec = high_resolution_clock::now();
-    auto durationVec = duration_cast<milliseconds>(endVec - startVec);
-    cout << "Inserted" << endl;
+    auto durationVec = duration_cast<microseconds>(endVec - startVec);
+    cout << "Inserted 'TESTCODE' in: " << " " << durationVec.count() << " microseconds\n";
+
+    // Inserting into List.................................................................
+    auto startLis = high_resolution_clock::now();
 
 
     return 0;
