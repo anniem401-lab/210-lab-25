@@ -90,9 +90,16 @@ int main() {
     // Third Race: INSERTING ==============================================================
     // The value "TESTCODE" will be inserted into the middle of the three data structures.
     cout << "Operation Inserting"; cout << " ------------------";
+
+    string inTC = "TESTCODE";
     
     // Inserting into Vector ..............................................................
-    
+    cout << "Inserting element in the middle of Vector.";
+    auto startVec = high_resolution_clock::now();
+    vRead.insert(vRead.begin() + 10000);
+    auto endVec = high_resolution_clock::now();
+    auto durationVec = duration_cast<milliseconds>(endVec - startVec);
+    cout << "Inserted" << endl;
 
 
     return 0;
