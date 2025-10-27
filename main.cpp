@@ -32,7 +32,7 @@ int main() {
     auto endV = high_resolution_clock::now();
     auto durationV = duration_cast<microseconds>(endV - startV);
 
-    cout << endl << "Operation Read"; cout << " ----------------";
+    cout << endl << "Operation Read"; cout << " -------------------";
     cout << endl << "Vector Read in: " << " " << durationV.count() << " microseconds\n";
     finV.close();
 
@@ -68,7 +68,7 @@ int main() {
 
     // Second Race: SORTING ===============================================================
     // Vector and List will be sorted. Set's value will be -1 since set's already sorted.
-    cout << "Operation Sorting"; cout << " -----------------";
+    cout << "Operation Sorting"; cout << " ------------------";
 
     // Sorting Vector......................................................................
     auto startVe = high_resolution_clock::now();
@@ -89,7 +89,7 @@ int main() {
 
     // Third Race: INSERTING ==============================================================
     // The value "TESTCODE" will be inserted into the middle of the three data structures.
-    cout << "Operation Inserting"; cout << " ------------------";
+    cout << "Operation Inserting"; cout << " ---------------------------------";
 
     string inTC = "TESTCODE";
     
@@ -98,11 +98,16 @@ int main() {
     vRead.insert(vRead.begin() + 10000, inTC);
     auto endVec = high_resolution_clock::now();
     auto durationVec = duration_cast<microseconds>(endVec - startVec);
-    cout << "Inserted 'TESTCODE' in: " << " " << durationVec.count() << " microseconds\n";
+    cout << endl << "Inserted 'TESTCODE' into Vector in: " << " " << durationVec.count() << " microseconds\n";
 
     // Inserting into List.................................................................
     auto startLis = high_resolution_clock::now();
+    lRead.insert(inTC, 10000);
+    auto endLis = high_resolution_clock::now();
+    auto durationLis = duration_cast<microseconds>(endLis - startLis);
+    cout << "Inserted 'TESTCODE' into List in: " << " " << durationLis.count() << " microseconds\n";
 
+    // Inserting into Set..................................................................
 
     return 0;
 }
