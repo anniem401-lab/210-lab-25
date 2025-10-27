@@ -17,6 +17,7 @@ int main() {
     // First race: READING ============================================================
     // 20,000 data elements will be read into these data structures: Vector, List, Set.
 
+    cout << "Start of Data Structure Races!" << endl;
     // Reading codes from the file.
     ifstream finV; // Reading for Vector...............................................
     finV.open("codes.txt"); // 20,000 elements in file
@@ -98,7 +99,7 @@ int main() {
     vRead.insert(vRead.begin() + 10000, inTC);
     auto endVec = high_resolution_clock::now();
     auto durationVec = duration_cast<microseconds>(endVec - startVec);
-    cout << endl << "Inserted 'TESTCODE' into Vector in: " << " " << durationVec.count() << " microseconds\n";
+    cout << endl << "Inserted 'TESTCODE' into middle of Vector in: " << " " << durationVec.count() << " microseconds\n";
 
     // Inserting into List.................................................................
     auto startLis = high_resolution_clock::now();
@@ -107,7 +108,7 @@ int main() {
     lRead.insert(it, inTC);
     auto endLis = high_resolution_clock::now();
     auto durationLis = duration_cast<microseconds>(endLis - startLis);
-    cout << "Inserted 'TESTCODE' into List in: " << " " << durationLis.count() << " microseconds\n";
+    cout << "Inserted 'TESTCODE' into middle of List in: " << " " << durationLis.count() << " microseconds\n";
 
     // Inserting into Set..................................................................
     auto startSet = high_resolution_clock::now();
@@ -125,7 +126,7 @@ int main() {
     vRead.erase(vRead.begin() + 10000);
     auto endVect = high_resolution_clock::now();
     auto durationVect = duration_cast<microseconds>(endVect - startVect);
-    cout << endl << "Middle element deleted from Vector in: " << " " << durationSet.count() << " microseconds\n";
+    cout << endl << "Middle element deleted from Vector in: " << " " << durationVect.count() << " microseconds\n";
 
     // Deleting from List..................................................................
     auto startList = high_resolution_clock::now();
@@ -138,13 +139,14 @@ int main() {
 
     // Deleting from Set....................................................................
     auto startSetD = high_resolution_clock::now();
-    // Deleting...
     auto it3 = sRead.begin();
     advance(it3, 10000);
     sRead.erase(it3);
     auto endSetD = high_resolution_clock::now();
     auto durationSetD = duration_cast<microseconds>(endSetD - startSetD);
     cout << "Middle element deleted from Set in: " << " " << durationSetD.count() << " microseconds\n" << endl;
+
+    cout << "End of Data Structure Races!" << endl;
 
     return 0;
 }
