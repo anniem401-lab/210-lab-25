@@ -32,7 +32,7 @@ int main() {
     auto endV = high_resolution_clock::now();
     auto durationV = duration_cast<microseconds>(endV - startV);
 
-    cout << endl << "Operation Read"; cout << " -------------------";
+    cout << endl << "Operation Read: Race 1"; cout << " -------------------";
     cout << endl << "Vector Read in: " << " " << durationV.count() << " microseconds\n";
     finV.close();
 
@@ -68,7 +68,7 @@ int main() {
 
     // Second Race: SORTING ===============================================================
     // Vector and List will be sorted. Set's value will be -1 since set's already sorted.
-    cout << "Operation Sorting"; cout << " ------------------";
+    cout << "Operation Sorting: Race 2"; cout << " ------------------";
 
     // Sorting Vector......................................................................
     auto startVe = high_resolution_clock::now();
@@ -89,7 +89,7 @@ int main() {
 
     // Third Race: INSERTING ==============================================================
     // The value "TESTCODE" will be inserted into the middle of the three data structures.
-    cout << "Operation Inserting"; cout << " ---------------------------------";
+    cout << "Operation Inserting: Race 3"; cout << " ---------------------------------";
 
     string inTC = "TESTCODE";
     
@@ -118,21 +118,33 @@ int main() {
 
     // Fourth Race: DELETING ==============================================================
     // The middle-ish element will be deleted from the three data structures.
-    cout << "Operation Deleting"; cout << " ---------------------------------";
+    cout << "Operation Deleting: Race 4"; cout << " ---------------------------------";
 
     // Deleting from Vector................................................................
     auto startVect = high_resolution_clock::now();
     vRead.erase(vRead.begin() + 10000);
     auto endVect = high_resolution_clock::now();
     auto durationVect = duration_cast<microseconds>(endVect - startVect);
-    cout << endl << "Middle element deleted from Vector in: " << " " << durationSet.count() << " microseconds\n" << endl;
+    cout << endl << "Middle element deleted from Vector in: " << " " << durationSet.count() << " microseconds\n";
 
     // Deleting from List..................................................................
     auto startList = high_resolution_clock::now();
-    // Deleting...
-    lRead.erase(it);
+    auto it2 = lRead.begin();
+    advance(it2, 10000);
+    lRead.erase(it2);
     auto endList = high_resolution_clock::now();
     auto durationList = duration_cast<microseconds>(endList - startList);
+    cout << "Middle element deleted from List in: " << " " << durationList.count() << " microseconds\n";
+
+    // Deleting from Set....................................................................
+    auto startSetD = high_resolution_clock::now();
+    // Deleting...
+    auto it3 = sRead.begin();
+    advance(it3, 10000);
+    sRead.erase(it3);
+    auto endSetD = high_resolution_clock::now();
+    auto durationSetD = duration_cast<microseconds>(endSetD - startSetD);
+    cout << "Middle element deleted from Set in: " << " " << durationSetD.count() << " microseconds\n" << endl;
 
     return 0;
 }
